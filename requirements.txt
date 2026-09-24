@@ -1,0 +1,4 @@
+# Runtime uses only the Python standard library (asyncio + sockets).
+# pytest is only needed if you want to run the tests:
+#     python -m pytest -q
+pytest>=8.0
