@@ -1,0 +1,11 @@
+# Render blueprint — deploy Socket-Store for free with a few clicks.
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: socket-store
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: "waitress-serve --listen=0.0.0.0:$PORT web:app"
+    autoDeploy: true
+    healthCheckPath: /api/health

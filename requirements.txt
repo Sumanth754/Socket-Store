@@ -1,4 +1,9 @@
-# Runtime uses only the Python standard library (asyncio + sockets).
-# pytest is only needed if you want to run the tests:
+# Runtime (web console + deploy):
+# Flask + waitress power the optional web doorway (web.py). Socket-Store's
+# own server.py needs only the Python standard library.
+flask>=3.0
+waitress>=3.0
+
+# Only needed to run the test suite:
 #     python -m pytest -q
 pytest>=8.0

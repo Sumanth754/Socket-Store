@@ -73,6 +73,20 @@ name visits
 > exit
 ```
 
+**Bonus — try it in your browser (free deploy)**
+
+Socket-Store also ships with a small web doorway (`web.py`) that runs the
+real TCP database in the background and gives it a browser console + REST
+API. It deploys to **Render's free tier** with the included `render.yaml` —
+send visitors a URL where they can type `SET/GET/KEYS` against your actual
+engine:
+```sh
+pip install -r requirements.txt
+python web.py            # -> http://localhost:5000
+```
+Endpoints: `GET /` (console), `POST /api/command` ({"command":"SET name Alice"}),
+`GET /api/health`.
+
 **3. Run the self-driving demo** (prints every command working — perfect for
 recording a GIF):
 ```sh
@@ -125,10 +139,12 @@ Environment variables (e.g. for Docker):
 ```
 server.py      the TCP server + command parser (the "database")
 client.py      interactive command-line client
+web.py         optional web doorway: real engine + browser console + REST API
 demo.py        scripted end-to-end demo
 test_server.py pytest suite (unit + socket-level integration tests)
 Dockerfile     container image for the server
-requirements.txt    only needed for running tests
+render.yaml    Render blueprint for a free public web demo
+requirements.txt    web dependencies + pytest (for tests)
 ```
 
 ## Design notes
